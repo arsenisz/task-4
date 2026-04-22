@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="controller.SiteController" 
+            prefHeight="600.0" prefWidth="1000.0">
+    
+    <!-- Ліва панель для введення даних -->
+    <left>
+        <VBox spacing="15" style="-fx-background-color: #f5f5f5; -fx-padding: 20;">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <!-- ID -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="ID:" minWidth="120" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="idField" editable="false" prefWidth="200" 
+                          style="-fx-background-color: #e0e0e0;"/>
+            </HBox>
+            
+            <!-- Назва -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Назва:" minWidth="120" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="nameField" prefWidth="200" promptText="Назва місця"/>
+            </HBox>
+            
+            <!-- Широта -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Широта, град:" minWidth="120" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="latitudeField" prefWidth="200" promptText="50.4501"/>
+            </HBox>
+            
+            <!-- Довгота -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Довгота, град:" minWidth="120" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="longitudeField" prefWidth="200" promptText="30.5234"/>
+            </HBox>
+            
+            <!-- Регіон -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Регіон:" minWidth="120" style="-fx-font-weight: bold;"/>
+                <ComboBox fx:id="regionComboBox" prefWidth="200" promptText="Оберіть регіон"/>
+            </HBox>
+            
+            <!-- Фото -->
+            <VBox spacing="5">
+                <Label text="Фото:" style="-fx-font-weight: bold;"/>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="imageField" prefWidth="200" promptText="image.jpg"/>
+                    <Button text="+" onAction="#handleChooseImage" 
+                           style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                </HBox>
+            </VBox>
+            
+            <!-- Кнопки операцій -->
+            <VBox spacing="10">
+                <padding>
+                    <Insets top="20"/>
+                </padding>
+                
+                <HBox spacing="10">
+                    <Button text="Insert" onAction="#handleInsert" prefWidth="150"
+                           style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 12px;"/>
+                    <Button text="Update" onAction="#handleUpdate" prefWidth="150"
+                           style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 12px;"/>
+                </HBox>
+                
+                <HBox spacing="10">
+                    <Button text="Clear" onAction="#handleClear" prefWidth="150"
+                           style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 12px;"/>
+                    <Button text="Delete" onAction="#handleDelete" prefWidth="150"
+                           style="-fx-background-color: #F44336; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 12px;"/>
+                </HBox>
+                
+                <Button text="Print" onAction="#handlePrint" prefWidth="310"
+                       style="-fx-background-color: #607D8B; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 12px;"/>
+            </VBox>
+        </VBox>
+    </left>
+    
+    <!-- Права панель з таблицею -->
+    <center>
+        <VBox spacing="10" style="-fx-padding: 20;">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <TableView fx:id="siteTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="nameColumn" text="Name" prefWidth="180"/>
+                    <TableColumn fx:id="latitudeColumn" text="Latitude" prefWidth="100"/>
+                    <TableColumn fx:id="longitudeColumn" text="Longitude" prefWidth="100"/>
+                    <TableColumn fx:id="regionColumn" text="Region" prefWidth="150"/>
+                    <TableColumn fx:id="photoColumn" text="Photo" prefWidth="120"/>
+                </columns>
+            </TableView>
+            
+            <!-- Статус бар -->
+            <Label fx:id="statusLabel" text="Ready" 
+                  style="-fx-background-color: #f0f0f0; -fx-padding: 10; -fx-border-color: #ccc; -fx-border-width: 1;"/>
+        </VBox>
+    </center>
+    
+</BorderPane>
